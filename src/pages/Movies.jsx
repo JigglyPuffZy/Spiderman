@@ -306,7 +306,13 @@ function Movies() {
                     <div className="card-badge" style={{
                       background: 'linear-gradient(135deg, #FFD700, #FFA500)',
                       top: 'auto',
-                      bottom: '1.25rem'
+                      bottom: '1.25rem',
+                      left: '1.25rem',
+                      right: 'auto',
+                      maxWidth: 'calc(100% - 2.5rem)',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis'
                     }}>
                       {movie.awards}
                     </div>

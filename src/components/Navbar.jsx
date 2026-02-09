@@ -45,7 +45,7 @@ function Navbar() {
             inset: 0,
             background: 'rgba(0, 0, 0, 0.7)',
             backdropFilter: 'blur(4px)',
-            zIndex: 998,
+            zIndex: 1000,
             animation: 'fadeIn 0.3s ease'
           }}
           onClick={() => setIsOpen(false)}

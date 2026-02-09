@@ -732,6 +732,7 @@
   z-index: 10;
   box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
 }
 
 .card:hover .card-badge {
@@ -970,7 +971,7 @@
     transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     border-left: 1px solid rgba(211, 47, 47, 0.3);
     box-shadow: -8px 0 40px rgba(0, 0, 0, 0.6);
-    z-index: 999;
+    z-index: 1001;
   }
 
   .nav-links-open {
