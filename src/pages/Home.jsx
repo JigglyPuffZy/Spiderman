@@ -38,61 +38,46 @@ function Home() {
 
   return (
     <>
-      <section className="hero" style={{
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
+      <section className="hero">
+        {/* Fallback gradient background */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(135deg, #0a0e1a 0%, #1a0a0f 50%, #0a0e1a 100%)',
+          zIndex: 0
+        }}></div>
+        
         <video 
           ref={videoRef}
           autoPlay 
           loop
           muted
           playsInline
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            minWidth: '100%',
-            minHeight: '100%',
-            width: 'auto',
-            height: 'auto',
-            transform: 'translate(-50%, -50%)',
-            objectFit: 'cover',
-            zIndex: 0
-          }}
+          preload="auto"
+          className="hero-video"
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
         
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(180deg, rgba(10, 14, 26, 0.3) 0%, rgba(10, 14, 26, 0.7) 100%)',
-          zIndex: 1
-        }}></div>
+        <div className="hero-overlay"></div>
+        <div className="hero-pattern"></div>
+        
+        <div className="hero-content">
+          <div className="hero-text">
+            <img 
+              src="https://1000logos.net/wp-content/uploads/2017/06/Spiderman-Logo.png" 
+              alt="Spider-Man"
+              className="hero-logo"
+              style={{
+                animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1), float 6s ease-in-out infinite'
+              }}
+            />
+          </div>
+        </div>
         
         <button 
           onClick={toggleMute}
-          style={{
-            position: 'absolute',
-            bottom: '2rem',
-            right: '2rem',
-            zIndex: 10,
-            background: 'rgba(10, 14, 26, 0.8)',
-            backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255, 255, 255, 0.15)',
-            borderRadius: '50%',
-            width: '60px',
-            height: '60px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-            color: '#fff',
-            fontSize: '1.5rem',
-            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)'
-          }}
+          className="mute-button"
           onMouseEnter={(e) => {
             e.currentTarget.style.background = 'rgba(211, 47, 47, 0.9)';
             e.currentTarget.style.transform = 'scale(1.1)';
@@ -107,20 +92,6 @@ function Home() {
         >
           {isMuted ? '🔇' : '🔊'}
         </button>
-
-        <div className="web-pattern" style={{ zIndex: 1 }}></div>
-        <div className="hero-content" style={{ zIndex: 2 }}>
-          <div className="hero-text">
-            <img 
-              src="https://1000logos.net/wp-content/uploads/2017/06/Spiderman-Logo.png" 
-              alt="Spider-Man"
-              className="hero-logo"
-              style={{
-                animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1), float 6s ease-in-out infinite'
-              }}
-            />
-          </div>
-        </div>
       </section>
 
       <div className="container">
@@ -172,7 +143,7 @@ function Home() {
             <div className="card-content">
               <h3>Spider-Verse</h3>
               <p>Discover different Spider-people and key moments across multiple dimensions and timelines.</p>
-              <Link to="/timeline" className="card-link">Explore Timeline →</Link>
+              <Link to="/movies" className="card-link">Explore Movies →</Link>
             </div>
           </div>
         </div>
@@ -193,23 +164,10 @@ function Home() {
         >
           <div className="web-pattern"></div>
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <h2 style={{ 
-              fontSize: '3rem', 
-              marginBottom: '1rem', 
-              color: 'white',
-              fontWeight: '800',
-              letterSpacing: '-0.02em',
-              textShadow: '0 0 40px rgba(211, 47, 47, 0.8)'
-            }}>
+            <h2 className="cta-heading">
               RESPONSIBILITY IN MOTION
             </h2>
-            <p style={{ 
-              fontSize: '1.25rem', 
-              maxWidth: '800px', 
-              margin: '0 auto', 
-              lineHeight: '1.8', 
-              color: 'rgba(255, 255, 255, 0.9)' 
-            }}>
+            <p className="cta-text">
               Move fast. Protect people. Leave no mess.
             </p>
           </div>

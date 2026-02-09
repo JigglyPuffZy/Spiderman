@@ -15,6 +15,18 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    // Prevent body scroll when sidebar is open
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const navItems = [
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
@@ -24,7 +36,23 @@ function Navbar() {
   ];
 
   return (
-    <nav className={`navbar ${scrolled || !isHomePage ? 'navbar-scrolled' : ''}`}>
+    <>
+      {/* Backdrop Overlay */}
+      {isOpen && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0, 0, 0, 0.7)',
+            backdropFilter: 'blur(4px)',
+            zIndex: 998,
+            animation: 'fadeIn 0.3s ease'
+          }}
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
+      <nav className={`navbar ${scrolled || !isHomePage ? 'navbar-scrolled' : ''}`}>
       <div className="nav-container">
         <Link to="/" className="nav-logo-wrapper">
           <div className="nav-logo">
@@ -60,6 +88,7 @@ function Navbar() {
         </ul>
       </div>
     </nav>
+    </>
   );
 }
 
