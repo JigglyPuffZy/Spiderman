@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 import heroVideo from '../assets/Spiderman Hero.mp4';
+import spidermanLogo from '../assets/Spiderman-Logo.png';
 
 function Home() {
   const [isMuted, setIsMuted] = useState(true);
@@ -65,7 +66,7 @@ function Home() {
         <div className="hero-content">
           <div className="hero-text">
             <img 
-              src="https://1000logos.net/wp-content/uploads/2017/06/Spiderman-Logo.png" 
+              src={spidermanLogo} 
               alt="Spider-Man"
               className="hero-logo"
               style={{
